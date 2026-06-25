@@ -31,6 +31,13 @@ TemplateMo 578 First Portfolio
 https://templatemo.com/tm-578-first-portfolio
 
 -->
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("cYvouRYMZ5KhIctde"); 
+       })();
+    </script>
     </head>
     
     <body>
@@ -450,7 +457,7 @@ https://templatemo.com/tm-578-first-portfolio
                             </div>
 
                             <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                                <form action="#" method="get" class="custom-form contact-form" role="form">
+                                <form id="contact-form"  class="custom-form contact-form" role="form">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="form-floating">
@@ -561,6 +568,23 @@ https://templatemo.com/tm-578-first-portfolio
         <script src="js/jquery.magnific-popup.min.js"></script>
         <script src="js/magnific-popup-options.js"></script>
         <script src="js/custom.js"></script>
+         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const serviceID = 'YOUR_SERVICE_ID';
+            const templateID = 'YOUR_TEMPLATE_ID';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    alert('Message sent successfully!');
+                    this.reset();
+                }, (err) => {
+                    alert('Failed to send message: ' + JSON.stringify(err));
+                });
+        });
+    </script>                                  
 
     </body>
 </html>
